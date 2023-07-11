@@ -6,7 +6,7 @@
     <app-button (click)="onPatchValue()">Agregar Texto</app-button>
     <br>
 
-    <app-form-field label="Input" [required]="true" [control]="form.controls.input" [isInline]="isInline">
+    <app-form-field label="Input" [required]="true" [control]="form.controls.input" [isInline]="isInline" [patternError]="regexErrors.email">
         <app-input formControlName="input"></app-input>
     </app-form-field>
 

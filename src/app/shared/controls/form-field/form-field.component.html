@@ -14,7 +14,10 @@
                 <span *ngSwitchCase="'requiredtrue'">Esta caja de texto es obligatoria</span>
                 <span *ngSwitchCase="'minlength'">Cantidada de caracteres minima {{control.errors ? control.errors[errorKey].requiredLength : 0}}</span>
                 <span *ngSwitchCase="'maxlength'">Cantidada de caracteres maxima {{control.errors ? control.errors[errorKey].requiredLength : 100000}}</span>
-                <span *ngSwitchCase="'pattern'"></span>
+                <span *ngSwitchCase="'pattern'">
+                  <span *ngIf="patternError">{{patternError}}</span>
+                  <span *ngIf="!patternError">La expresion regular no tiene coincidencias</span>  
+                </span>
             </ng-container>
         </div>
 
