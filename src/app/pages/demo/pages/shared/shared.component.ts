@@ -12,7 +12,7 @@ export class SharedComponent implements OnInit {
   isInline!: boolean;
   regexErrors = regexErrors;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -23,17 +23,22 @@ export class SharedComponent implements OnInit {
           Validators.minLength(3),
           Validators.pattern(regex.email)
         ]
+      }],
+      password: [null, {
+        updateOn: 'blur', validators: [
+          Validators.required
+        ]
       }]
     });
   }
 
   onPatchValue() {
-    this.form.patchValue({input: 'some value'});
+    this.form.patchValue({ input: 'some value' });
   }
 
   onSubmit(): void {
     console.log('Presiono boton submit');
-    
+
   }
 
   organizarElemento() {
