@@ -19,14 +19,14 @@ export class SharedComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.isInline = true;
     this.items = [
-      {label: 'Uno', value: 1},
-      {label: 'Dos', value: 2},
-      {label: 'Tres', value: 3},
-      {label: 'Cuatro', value: 4},
-      {label: 'Cinco', value: 5}
-      
+      { label: 'Uno', value: 1 },
+      { label: 'Dos', value: 2 },
+      { label: 'Tres', value: 3 },
+      { label: 'Cuatro', value: 4 },
+      { label: 'Cinco', value: 5 }
     ]
-   }
+
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -44,6 +44,11 @@ export class SharedComponent implements OnInit {
         ]
       }],
       select: [null, {
+        updateOn: 'change', validators: [
+          Validators.required
+        ]
+      }],
+      checkboxes: [null, {
         updateOn: 'change', validators: [
           Validators.required
         ]
