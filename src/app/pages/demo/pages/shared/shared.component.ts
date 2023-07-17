@@ -57,6 +57,11 @@ export class SharedComponent implements OnInit {
         updateOn: 'change', validators: [
           Validators.required
         ]
+      }],
+      raddateios: [null, {
+        updateOn: 'change', validators: [
+          Validators.required
+        ]
       }]
     });
   }
