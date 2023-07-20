@@ -1,5 +1,10 @@
-<h1>Formularios de Angular</h1>
+<h2>Actions</h2>
+<app-button (click)="onToggleSpinner()">Toggle Spinner</app-button>
+<app-button (click)="onError()">Error</app-button>
+<app-button (click)="onSuccess()">Success</app-button>
+<br><br><br>
 
+<h2>Formularios de Angular</h2>
 
 <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
     <app-button type="submit">Submit</app-button>

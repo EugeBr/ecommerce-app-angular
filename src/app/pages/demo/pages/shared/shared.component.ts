@@ -113,4 +113,16 @@ export class SharedComponent implements OnInit {
     }
   }
 
+  onToggleSpinner(): void {
+
+  }
+
+  onError(): void {
+
+  }
+
+  onSuccess(): void {
+    
+  }
+
 }
