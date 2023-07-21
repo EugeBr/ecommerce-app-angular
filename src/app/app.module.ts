@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NotificationsModule } from './services';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,7 +17,7 @@ const APP_DATE_FORMATS: MatDateFormats = {
     dateInput: { day: 'numeric', month: 'numeric', year: 'numeric' },
     monthYearLabel: { year: 'numeric', month: 'short' },
     dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
-    monthYearA11Label: { year: 'numeric', month: 'long' }
+    monthYearA11yLabel: { year: 'numeric', month: 'long' }
   }
 };
 
@@ -29,7 +31,8 @@ const APP_DATE_FORMATS: MatDateFormats = {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NotificationsModule.forRoot()
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
