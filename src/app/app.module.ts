@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { NotificationsModule } from './services';
+import { NotificationModule } from './services';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [];
+import { reducers, effects } from './store';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -32,11 +38,23 @@ const APP_DATE_FORMATS: MatDateFormats = {
     AppRoutingModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
+
+
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictActionInmutability: true,
+        strictStateInmutability: true
+      }
+    }),
+    EffectsModule.forRoot(effects),
+    StoreDevtools,
+
+
     NotificationsModule.forRoot()
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
   ],
   bootstrap: [AppComponent]
 })
