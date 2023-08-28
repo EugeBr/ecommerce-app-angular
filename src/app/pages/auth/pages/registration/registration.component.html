@@ -10,11 +10,11 @@
             </app-form-field>
 
             <app-form-field label="Password" [required]="true" [control]="form.controls.password" [isInline]="false" [patternError]="regexErrors.password">
-                <app-input formControlName="password"></app-input>
+                <app-password formControlName="password"></app-password>
             </app-form-field>
 
             <app-form-field label="Repeat Password" [required]="true" [control]="form.controls.passwordRepeat" [isInline]="false" [patternError]="regexErrors.password">
-                <app-input formControlName="passwordRepeat"></app-input>
+                <app-password formControlName="passwordRepeat"></app-password>
             </app-form-field>
 
             <div class="error" [class.error_active]="form.hasError('repeat')">
