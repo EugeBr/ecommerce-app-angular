@@ -2,7 +2,7 @@ import { ActionReducerMap } from "@ngrx/store";
 
 import * as fromDictionaries from './dictionaries';
 
-import * fromUser from './user';
+import * as fromUser from './user';
 
 export interface State {
     dictionaries: fromDictionaries.DictionariesState;

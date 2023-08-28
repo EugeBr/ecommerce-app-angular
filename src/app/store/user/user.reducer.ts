@@ -15,7 +15,7 @@ const initialState: UserState = {
     error: null
 }
 
-export function reducer(state = initialState, action: fromActions.All) : UserState {
+export function reducer(state = initialState, action: fromActions.All | any) : UserState {
     switch(action.type) {
         //sign In o Login
         case fromActions.Types.SIGN_IN_EMAIL: {
