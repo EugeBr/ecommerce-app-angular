@@ -80,4 +80,23 @@ export class UserEffects {
             )
         )
     );
+
+    init: Observable<Action> = createEffect(() =>
+    this.actions.pipe > (
+        ofType(fromActions.Types.INIT),
+        switchMap( () => this.afAuth.authState.pipe(take(1))),
+        switchMap( authState => {
+            if(authState){
+                return this.afs.doc<User>(`users/${authState.uid}`).valueChanges().pipe(
+                    take(1),
+                    map(user => new fromActions.InitAuthorized(authState.uid, user || null)),
+                    catchError(err => of(new fromActions.InitError(err.message)))
+                )
+            }else{
+                return of(new fromActions.InitUnauthorized());
+            }
+        })
+    )
+);
+
 }
