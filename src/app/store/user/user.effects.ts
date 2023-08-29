@@ -56,7 +56,11 @@ export class UserEffects {
                 from(this.afAuth.signInWithEmailAndPassword(credentials.email, credentials.password)).pipe(
                     switchMap(singInState =>
                         this.afs.doc<User>(`users/${singInState.user ? singInState.user?.uid : ''}`).valueChanges().pipe(
+
                             take(1),
+                            tap(() => {
+                                this.router.navigate(['/']);
+                            }),
                             map(user => new fromActions.SignInEmailSuccess(singInState.user ? singInState.user?.uid : '', user || null))
                         )),
                     catchError(err => {
