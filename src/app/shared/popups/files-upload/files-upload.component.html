@@ -23,13 +23,19 @@
 
         </ng-container>
 
+        <ng-container *ngIf="imageFile">
+            <app-cropper [imageFile]="imageFile" (changed)="onCrop($event)"></app-cropper>
+        </ng-container>
+
         <ng-container *ngIf="files">
             <app-upload *ngFor="let file of files" [file]="file" (completed)="onUploadComplete($event)"></app-upload>
         </ng-container>
 
-        <div class="files-upload__footer">
-            <button class="app-button" (click)="onClose()" *ngIf="!filesURLs.length">Cerrar</button>
-            <button class="app-button" (click)="onComplete()" *ngIf="filesURLs.length">Completado</button>
-        </div>
-
     </div>
+
+    <div class="files-upload__footer" *ngIf="!imageFile">
+        <button class="app-button" (click)="onClose()" *ngIf="!filesURLs.length">Cerrar</button>
+        <button class="app-button" (click)="onComplete()" *ngIf="filesURLs.length">Completado</button>
+    </div>
+
+</div>
