@@ -28,6 +28,8 @@
         </ng-container>
 
         <div class="files-upload__footer">
-
+            <button class="app-button" (click)="onClose()" *ngIf="!filesURLs.length">Cerrar</button>
+            <button class="app-button" (click)="onComplete()" *ngIf="filesURLs.length">Completado</button>
         </div>
+
     </div>

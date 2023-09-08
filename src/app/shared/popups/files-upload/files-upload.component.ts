@@ -56,4 +56,14 @@ export class FilesUploadComponent {
   onUploadComplete(url: string) : void {
     this.filesURLs.push(url);
   }
+
+  onComplete(): void {
+    const res = this.data.multiple ? this.filesURLs : this.filesURLs[0];
+    this.dialogRef.close(res);
+  }
+
+  onClose(): void {
+    this.dialogRef.close();
+  }
+
 }
