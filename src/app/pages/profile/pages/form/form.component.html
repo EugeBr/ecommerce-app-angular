@@ -1,1 +1,15 @@
-<p>form works!</p>
+<div class="app-page">
+    <div class="app-page__header">
+        <h1>Perfil de Usuario</h1>
+    </div>
+
+    <div class="app-page__content">
+        <app-stepper>
+            <ng-container [ngSwitch]="stepper?.activeStep?.key">
+                <div *ngSwitchCase="'uno'">Uno</div>
+                <div *ngSwitchCase="'dos'">Dos</div>
+                <div *ngSwitchCase="'tres'">Tres</div>
+            </ng-container>
+        </app-stepper>
+    </div>
+</div>

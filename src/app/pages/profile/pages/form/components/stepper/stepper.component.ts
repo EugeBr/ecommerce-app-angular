@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StepperService } from './services';
 
 @Component({
   selector: 'app-stepper',
@@ -7,4 +8,29 @@ import { Component } from '@angular/core';
 })
 export class StepperComponent {
 
+  constructor(private stepper: StepperService) {}
+
+  get steps() {
+    return this.stepper.steps;
+  }
+
+  get activeStep() {
+    return this.stepper.activeStep;
+  }
+
+  isActive(index: number): boolean {
+    return index === this.activeStep.index;
+  }
+
+  isCompleted(index: number): boolean {
+    return index < this.activeStep.index;
+  }
+
+  isFirst(): boolean {
+    return this.activeStep.index === 0;
+  }
+
+  isLast(): boolean {
+    return this.activeStep.index === this.steps.length -1;
+  }
 }
