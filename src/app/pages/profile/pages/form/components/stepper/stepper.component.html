@@ -20,6 +20,9 @@
     </div>
 
     <div class="stepper__footer">
-
+        <button class="app-button" *ngIf="isFirst()" (click)="onCancel()">Cancelar</button>
+        <button class="app-button" *ngIf="isFirst()" (click)="onPrev()">&#8592;</button>
+        <button class="app-button" *ngIf="isLast()" (click)="onNext()">&#8594;</button>
+        <button class="app-button" *ngIf="isLast()" (click)="onComplete()">Completado</button>
     </div>
 </div>

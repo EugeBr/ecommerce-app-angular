@@ -14,9 +14,8 @@ export class FormComponent implements OnInit{
 
   ngOnInit(): void {
     this.stepper.init([
-      {key: 'uno', label: 'Uno'},
-      {key: 'dos', label: 'Dos'},
-      {key: 'tres', label: 'Tres'}
+      {key: 'personal', label: 'Personal'},
+      {key: 'professional', label: 'Profesional'}
     ])
   }
 

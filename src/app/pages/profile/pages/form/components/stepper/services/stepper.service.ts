@@ -20,4 +20,15 @@ export class StepperService {
   }
 
   constructor() { }
+
+  onNext(): void {
+    const index = this.activeStep.index + 1;
+    this.activeStep = {...this.steps[index], index};
+  }
+
+  onPrev(): void {
+    const index = this.activeStep.index - 1;
+    this.activeStep = {...this.steps[index], index};
+  }
+  
 }
