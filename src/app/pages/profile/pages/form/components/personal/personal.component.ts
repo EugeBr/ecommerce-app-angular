@@ -52,20 +52,20 @@ export class PersonalComponent implements OnInit, OnDestroy {
       }]
     });
 
-    if(this.value) {
+    if (this.value) {
       this.form.patchValue(this.value);
     }
 
     this.stepper.check$.pipe(takeUntil(this.destroy)).subscribe((type) => {
-      
-      if(this.form.valid) {
+
+      if (this.form.valid) {
         markFormGroupTouched(this.form);
         this.form.updateValueAndValidity();
         this.cdr.detectChanges();
-      }else{
+      } else {
         this.changed.emit(this.form.value);
       }
-      
+
       this.stepper[type].next(this.form.valid);
     });
   }
@@ -77,10 +77,9 @@ export class PersonalComponent implements OnInit, OnDestroy {
 
   onPhotoChanged(url: any): void {
     console.log('url', url);
-    
-  /*  if(url) {
+    if (url) {
       this.form.controls.photoURL.setValue(url);
-    } */ 
+    }
   }
 
 }
