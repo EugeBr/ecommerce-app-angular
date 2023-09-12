@@ -5,6 +5,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from 'src/app/store';
 import * as fromDictionaries from 'src/app/store/dictionaries';
+import { PersonalForm } from './components/personal/personal.component';
 
 @Component({
   selector: 'app-form',
@@ -43,6 +44,10 @@ export class FormComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.destroy.next(null);
     this.destroy.complete();
+  }
+
+  onChangedPersonal(data: PersonalForm): void {
+    console.log('personal data', data);
   }
 
 }

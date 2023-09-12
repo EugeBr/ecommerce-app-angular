@@ -1,1 +1,19 @@
-<p>personal works!</p>
+<form [formGroup]="form" novalidate autocomplete="off">
+
+    <div class="personal__photo">
+        <div class="photo">
+            <div class="app-a" appFilesUpload [crop]="true" (changed)="onPhotoChanged($event)">
+                Subir imagen de perfil
+            </div>
+        </div>
+    </div>
+
+    <app-form-field [required]="true" label="Nombre" [control]="form.controls.name">
+        <app-input formControlName="name"></app-input>
+    </app-form-field>
+
+    <app-form-field [required]="true" label="Paises" [control]="form.controls.country">
+        <app-autocomplete formControlName="country" [items]="dictionaries ? dictionaries.countries.controlItems : []"></app-autocomplete>
+    </app-form-field>
+
+</form>
