@@ -58,7 +58,7 @@ export class PersonalComponent implements OnInit, OnDestroy {
 
     this.stepper.check$.pipe(takeUntil(this.destroy)).subscribe((type) => {
 
-      if (this.form.valid) {
+      if (!this.form.valid) {
         markFormGroupTouched(this.form);
         this.form.updateValueAndValidity();
         this.cdr.detectChanges();

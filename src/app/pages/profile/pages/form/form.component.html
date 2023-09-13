@@ -9,7 +9,9 @@
                 <app-personal [dictionaries]="dictionaries$ | sync"
                 (change)="onChangedPersonal($event)"
                 *ngSwitchCase="'personal'"></app-personal>
-                <app-professional *ngSwitchCase="'professional'"></app-professional>
+                <app-professional *ngSwitchCase="'professional'"
+                [dictionaries]="dictionaries$ | sync"
+                (change)="onChangedProfesional($event)"></app-professional>
             </ng-container>
         </app-stepper>
     </div>

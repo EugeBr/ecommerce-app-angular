@@ -6,6 +6,7 @@ import { Store, select } from '@ngrx/store';
 import * as fromRoot from 'src/app/store';
 import * as fromDictionaries from 'src/app/store/dictionaries';
 import { PersonalForm } from './components/personal/personal.component';
+import { ProfesionalForm } from './components/professional/professional.component';
 
 @Component({
   selector: 'app-form',
@@ -28,8 +29,8 @@ export class FormComponent implements OnInit, OnDestroy{
     this.dictionaries$ = this.store.pipe(select(fromDictionaries.getDictionaries)) as Observable<any>;
     this.dictionariesIsReady$ = this.store.pipe(select(fromDictionaries.getIsReady)) as Observable<boolean>;
     this.stepper.init([
-      {key: 'personal', label: 'Personal'},
-      {key: 'professional', label: 'Profesional'}
+      {key: 'professional', label: 'Profesional'},
+      {key: 'personal', label: 'Personal'}
     ])
 
     this.stepper.complete$.pipe(takeUntil(this.destroy)).subscribe(() => {
@@ -48,6 +49,10 @@ export class FormComponent implements OnInit, OnDestroy{
 
   onChangedPersonal(data: PersonalForm): void {
     console.log('personal data', data);
+  }
+
+  onChangedProfesional(data: ProfesionalForm): void {
+    console.log('profesional data', data);
   }
 
 }
