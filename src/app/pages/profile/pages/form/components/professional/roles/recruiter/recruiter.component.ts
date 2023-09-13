@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Dictionaries } from 'src/app/store/dictionaries';
+import { EmployeeForm } from '../employee/employee.component';
 
 export interface RecruiterForm {
   companyName: string;
@@ -17,7 +18,7 @@ export class RecruiterComponent implements OnInit, OnDestroy {
   @Input() parent!: FormGroup;
   @Input() name!: string;
 
-  @Input() value!: RecruiterForm;
+  @Input() value!: RecruiterForm | EmployeeForm;
   @Input() dictionaries!: Dictionaries | null;
 
   form!: FormGroup;
