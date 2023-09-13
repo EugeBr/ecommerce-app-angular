@@ -4,10 +4,12 @@ import { StepperService } from '../stepper/services';
 import { Dictionaries } from 'src/app/store/dictionaries';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { markFormGroupTouched, regexErrors } from 'src/app/shared';
+import { RecruiterForm } from './roles/recruiter/recruiter.component';
 
 export interface ProfesionalForm {
   about: string;
-  roleId: string
+  roleId: string;
+  role: RecruiterForm;
 }
 
 @Component({
