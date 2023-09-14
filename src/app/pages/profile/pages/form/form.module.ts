@@ -12,9 +12,10 @@ import { StepperModule } from './components';
 import { PersonalComponent } from './components/personal/personal.component';
 import { ProfessionalComponent } from './components/professional/professional.component';
 
-import { UserPhotoModule } from 'src/app/shared';
+import { ButtonModule, UserPhotoModule } from 'src/app/shared';
 import { EmployeeComponent } from './components/professional/roles/employee/employee.component';
 import { RecruiterComponent } from './components/professional/roles/recruiter/recruiter.component';
+import { ExperienceComponent } from './components/professional/roles/employee/experience/experience.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RecruiterComponent } from './components/professional/roles/recruiter/re
     PersonalComponent,
     ProfessionalComponent,
     EmployeeComponent,
-    RecruiterComponent
+    RecruiterComponent,
+    ExperienceComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { RecruiterComponent } from './components/professional/roles/recruiter/re
     SelectModule,
     CheckboxesModule,
     RadiosModule,
-    DateRangeModule
+    DateRangeModule,
+    ButtonModule
   ]
 })
 export class FormModule { }

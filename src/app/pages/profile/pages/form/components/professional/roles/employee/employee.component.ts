@@ -2,12 +2,14 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Dictionaries } from 'src/app/store/dictionaries';
 import { RecruiterForm } from '../recruiter/recruiter.component';
+import { ExperienceForm } from './experience/experience.component';
 
 export interface EmployeeForm {
   specialization: string;
   skills: string[];
   qualification: string;
   expectedSalary: number;
+  experiences: ExperienceForm[];
 }
 
 @Component({
