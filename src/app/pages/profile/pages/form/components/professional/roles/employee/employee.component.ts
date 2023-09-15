@@ -4,6 +4,8 @@ import { Dictionaries } from 'src/app/store/dictionaries';
 import { RecruiterForm } from '../recruiter/recruiter.component';
 import { ExperienceForm } from './experience/experience.component';
 
+import { ControlEntities, mapControls } from 'src/app/shared';
+
 export interface EmployeeForm {
   specialization: string;
   skills: string[];
@@ -26,6 +28,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   @Input() dictionaries!: Dictionaries | null;
 
   form!: FormGroup;
+  controls!: ControlEntities;
 
   constructor(
     private fb: FormBuilder
@@ -43,21 +46,62 @@ export class EmployeeComponent implements OnInit, OnDestroy {
           Validators.required
         ]
       }],
-      qualification: [null, {
+      qualification: [{ value: null, disabled: true }, {
         updateOn: 'change', validators: [
           Validators.required
         ]
       }],
-      skills: [null, {
+      skills: [{ value: null, disabled: true }, {
         updateOn: 'change', validators: [
           Validators.required
         ]
       }]
+
     });
+
+    this.controls = {
+      specialization: {
+        items: this.dictionaries?.specializations.controlItems,
+        changed: () => {
+          this.controls.qualification.map();
+          this.controls.skills.map();
+        }
+      },
+      qualification: {
+        items: this.dictionaries?.qualifications.controlItems,
+        map: () => {
+          if(this.form.value.specialization) {
+            this.form.controls.qualification.enable();
+          }else{
+            this.form.controls.qualification.reset();
+            this.form.controls.qualification.disable();
+          }
+        }
+      },
+      skills: {
+        items: this.dictionaries?.skills.controlItems,
+        map: () => {
+          if(this.form.value.specialization) {
+            this.form.controls.skills.enable();
+
+            const items = [...this.dictionaries?.skills.controlItems || []].map(
+              (item, index) => ({...items, label: `${item.label} (${index + 1})`})
+            );
+
+            this.controls.skills.items = items;
+          }else{
+            this.form.controls.skills.reset();
+            this.form.controls.skills.disable();
+          }
+        }
+      }
+    };
 
     if(this.value) {
       this.form.patchValue(this.value);
     }
+
+    mapControls(this.controls);
 
     this.parent.addControl(this.name, this.form);
 
