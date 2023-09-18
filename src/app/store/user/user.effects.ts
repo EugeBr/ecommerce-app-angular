@@ -116,8 +116,23 @@ create: Observable<Action> = createEffect(() =>
             })),
             switchMap((user: User) => 
                 from(this.afs.collection('users').doc(user.uid).set(user)).pipe(
+                    tap(() => this.router.navigate(['/profile', user.uid])),
                     map(() => new fromActions.CreateSuccess(user)),
                     catchError(err => of(new fromActions.CreateError(err.message)))
+                )
+            )
+        )
+    );
+
+    update: Observable<Action> = createEffect(() =>
+        this.actions.pipe(
+            ofType(fromActions.Types.UPDATE),
+            map((action: fromActions.Update) => action.user),
+            switchMap((user: User) => 
+                from(this.afs.collection('users').doc(user.uid).set(user)).pipe(
+                    tap(() => this.router.navigate(['/profile', user.uid])),
+                    map(() => new fromActions.UpdateSuccess(user)),
+                    catchError(err => of(new fromActions.UpdateError(err.message)))
                 )
             )
         )
