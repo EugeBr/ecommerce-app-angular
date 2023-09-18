@@ -29,7 +29,7 @@ export class UserEffects {
     ) { }
 
     signUpEmail: Observable<Action> = createEffect(() =>
-        this.actions.pipe > (
+        this.actions.pipe(
             ofType(fromActions.Types.SIGN_UP_EMAIL),
             map((action: fromActions.SignUpEmail) => action.credentials),
             switchMap(credentials =>
@@ -49,7 +49,7 @@ export class UserEffects {
     );
 
     signInEmail: Observable<Action> = createEffect(() =>
-        this.actions.pipe > (
+        this.actions.pipe(
             ofType(fromActions.Types.SIGN_IN_EMAIL),
             map((action: fromActions.SignInEmail) => action.credentials),
             switchMap(credentials =>
@@ -72,7 +72,7 @@ export class UserEffects {
     );
 
     signOut: Observable<Action> = createEffect(() =>
-        this.actions.pipe > (
+        this.actions.pipe(
             ofType(fromActions.Types.SIGN_OUT_EMAIL),
             switchMap( () =>
                 from(this.afAuth.signOut() ).pipe(
@@ -86,7 +86,7 @@ export class UserEffects {
     );
 
     init: Observable<Action> = createEffect(() =>
-    this.actions.pipe > (
+    this.actions.pipe(
         ofType(fromActions.Types.INIT),
         switchMap( () => this.afAuth.authState.pipe(take(1))),
         switchMap( authState => {
@@ -102,5 +102,25 @@ export class UserEffects {
         })
     )
 );
+
+create: Observable<Action> = createEffect(() =>
+        this.actions.pipe(
+            ofType(fromActions.Types.CREATE),
+            map((action: fromActions.Create) => action.user),
+            withLatestFrom(this.afAuth.authState.pipe(take(1))),
+            map(([user, state]) => ({
+                ...user,
+                uid: state?.uid || '',
+                email: state?.email || '',
+                created: firebase.firestore.FieldValue.serverTimestamp()
+            })),
+            switchMap((user: User) => 
+                from(this.afs.collection('users').doc(user.uid).set(user)).pipe(
+                    map(() => new fromActions.CreateSuccess(user)),
+                    catchError(err => of(new fromActions.CreateError(err.message)))
+                )
+            )
+        )
+    );
 
 }

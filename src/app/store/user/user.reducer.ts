@@ -73,6 +73,32 @@ export function reducer(state = initialState, action: fromActions.All | any) : U
             return {...state, loading: false, error: action.error}
         }
 
+        //Create
+        case fromActions.Types.CREATE: {
+            return {...state, loading: true, error: null}
+        }
+
+        case fromActions.Types.CREATE_SUCCESS: {
+            return {...state, loading: false, entity: action.user}
+        }
+
+        case fromActions.Types.CREATE_ERROR: {
+            return {...state, loading: false, error: action.error}
+        }
+
+        //Update
+        case fromActions.Types.UPDATE: {
+            return {...state, loading: true, error: null}
+        }
+
+        case fromActions.Types.UPDATE_SUCCESS: {
+            return {...state, loading: false, entity: action.user}
+        }
+
+        case fromActions.Types.UPDATE_ERROR: {
+            return {...state, loading: false, error: action.error}
+        }
+
         default: {
             return state;
         }

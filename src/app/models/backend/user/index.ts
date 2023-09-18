@@ -9,8 +9,8 @@ export interface User {
     email: string;
     country: string;
     about?: string;
-    roleId: string;
-    role: Employee | Recruiter;
+    roleId?: string;
+    role?: Employee | Recruiter;
     created: firebase.firestore.FieldValue;
     updated?: firebase.firestore.FieldValue;
 }
