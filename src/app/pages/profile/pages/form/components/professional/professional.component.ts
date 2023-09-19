@@ -21,7 +21,7 @@ export interface ProfesionalForm {
 })
 export class ProfessionalComponent implements OnDestroy, OnInit {
 
-  @Input() value!: ProfesionalForm;
+  @Input() value!: ProfesionalForm | any;
   @Input() dictionaries!: Dictionaries | null;
 
   @Output() changed = new EventEmitter<ProfesionalForm>();

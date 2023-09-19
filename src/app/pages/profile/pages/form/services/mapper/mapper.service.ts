@@ -34,7 +34,7 @@ export class MapperService {
         expectedSalary: role.expectedSalary,
         specialization: role.specialization ? role.specialization.id : null,
         qualification: role.qualification ? role.qualification.id : null,
-        skills: role.skills.map(x => x.id),
+        skills: role.skills.map((x:any) => x.id),
         experiences: role.experiences
       }
 
@@ -74,7 +74,7 @@ export class MapperService {
         specialization: dictionaries.specializations.items.find(x => x.id === formRole.specialization) || null,
         qualification: dictionaries.qualifications.items.find(x => x.id === formRole.qualification) || null,
         skills: formRole.skills.map(id => dictionaries.skills.items.find(x => x.id === id)),
-        experiences: formRole.experiences
+        experiences: form.professional.role.experience
       }
       return role;
     }

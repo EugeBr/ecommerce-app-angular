@@ -9,4 +9,6 @@ export const reducers: ActionReducerMap<ProfileState> = {
     form: fromForm.reducer
 };
 
+export const effects: any[] = [];
+
 export const getProfileState = createFeatureSelector<ProfileState>('profile');

@@ -6,12 +6,14 @@
     <div class="app-page__content">
         <app-stepper *ngIf="dictionariesIsReady$ | asyc">
             <ng-container [ngSwitch]="stepper?.activeStep?.key">
-                <app-personal [dictionaries]="dictionaries$ | sync"
+                <app-personal [dictionaries]="dictionaries$ | async"
                 (change)="onChangedPersonal($event)"
-                *ngSwitchCase="'personal'"></app-personal>
+                *ngSwitchCase="'personal'"
+                [value]="personal$ | async"></app-personal>
                 <app-professional *ngSwitchCase="'professional'"
-                [dictionaries]="dictionaries$ | sync"
-                (change)="onChangedProfesional($event)"></app-professional>
+                [dictionaries]="dictionaries$ | async"
+                (change)="onChangedProfesional($event)"
+                [value]="professional$ | async"></app-professional>
             </ng-container>
         </app-stepper>
     </div>

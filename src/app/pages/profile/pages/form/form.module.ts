@@ -16,6 +16,8 @@ import { ButtonModule, UserPhotoModule } from 'src/app/shared';
 import { EmployeeComponent } from './components/professional/roles/employee/employee.component';
 import { RecruiterComponent } from './components/professional/roles/recruiter/recruiter.component';
 import { ExperienceComponent } from './components/professional/roles/employee/experience/experience.component';
+import { MapperService } from './services';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +44,9 @@ import { ExperienceComponent } from './components/professional/roles/employee/ex
     RadiosModule,
     DateRangeModule,
     ButtonModule
+  ],
+  providers: [
+    MapperService
   ]
 })
 export class FormModule { }
