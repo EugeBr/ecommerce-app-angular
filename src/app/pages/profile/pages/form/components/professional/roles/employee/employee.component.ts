@@ -7,9 +7,9 @@ import { ExperienceForm } from './experience/experience.component';
 import { ControlEntities, mapControls } from 'src/app/shared';
 
 export interface EmployeeForm {
-  specialization: string;
+  specialization: string | null;
   skills: string[];
-  qualification: string;
+  qualification: string | null;
   expectedSalary: number;
   experiences: ExperienceForm[];
 }

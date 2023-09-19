@@ -6,9 +6,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { markFormGroupTouched, regexErrors } from 'src/app/shared';
 
 export interface PersonalForm {
-  name: string;
-  photoURL: string;
-  country: string;
+  name: string | null;
+  photoURL: string | null;
+  country: string | null;
 }
 
 @Component({
