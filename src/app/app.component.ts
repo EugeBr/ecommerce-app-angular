@@ -14,9 +14,12 @@ export class AppComponent {
   title = 'ecommerce-app-angular';
   isAuthorized$ !: Observable<boolean>;
 
+  user$!: Observable<fromUser.User>;
+
   constructor(private store: Store<fromRoot.State>){}
 
   ngOnInit(){
+    this.user$ = this.store.pipe(select(fromUser.getUser)) as Observable<fromUser.User>;
     this.isAuthorized$ = this.store.pipe(select(fromUser.getIsAuthorized))
 
     this.store.dispatch(new fromUser.Init());
