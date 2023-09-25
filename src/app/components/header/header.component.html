@@ -9,6 +9,7 @@
         <a class="app-a" routerLink="demo" routerLinkActive="app-a_active">Demo</a>
 
         <div *ngIf="isAthorized">
+            <a class="app-a" routerLink="employees">Empleados</a>
             <a class="app-a" (click)="onProfileNavigate()">Pelfil</a>
             <a class="app-a" (click)="onSignOut()">Salir Sesion</a>
         </div>

@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [];
 import { reducers, effects } from './store';
+import { EmployeeComponent } from './pages/employee/employee.component';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -31,7 +32,8 @@ const APP_DATE_FORMATS: MatDateFormats = {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
