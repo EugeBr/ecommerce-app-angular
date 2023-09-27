@@ -9,10 +9,12 @@ import { EmployeesRoutingModule } from './employees-routing.module';
 import { EmployeesComponent } from './employees.component';
 
 import { UserPhotoModule } from 'src/app/shared';
+import { EmployeeComponent } from './components/employee/employee.component';
 
 @NgModule({
   declarations: [
-    EmployeesComponent
+    EmployeesComponent,
+    EmployeeComponent
   ],
   imports: [
     CommonModule,
